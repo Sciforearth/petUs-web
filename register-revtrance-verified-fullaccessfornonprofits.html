@@ -39,7 +39,7 @@
     <meta property="og:type" content="website">
   </head>
   <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-b153"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="1024" data-image-height="1024">
+        <a href="Home.html" class="u-image u-logo u-image-1" data-image-width="1024" data-image-height="1024">
           <img src="images/Group54.png" class="u-logo-image u-logo-image-1" alt="">
         </a>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1" data-responsive-from="MD">
@@ -76,20 +76,22 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-text u-text-default u-text-1">Register<br>
         </h1><span class="u-file-icon u-icon u-icon-1" data-animation-name="customAnimationIn" data-animation-duration="1000"><img src="images/2523618.png" alt=""></span>
-        <p class="u-text u-text-default u-text-2">By registering here you will get full post previlage and verified account. See you on PetUs</p>
+        <p class="u-text u-text-default u-text-2">By registering here you will get full posting privilege and verified account on the application. See you on PetUs. Have a query ? please fill out the form on <a href="/home.html">Home</a></a></p>
         <div class="u-form u-form-1">
           <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="email" name="form">
             <div class="u-form-group u-form-name u-label-none">
               <label for="name-6797" class="u-label">Name</label>
-              <input type="text" placeholder="Orginisation Name" id="name-6797" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+              <input type="text" placeholder="Organisation Name" id="name-6797" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="true">
             </div>
             <div class="u-form-email u-form-group u-label-none">
-              <label for="email-6797" class="u-label">Email</label>
-              <input type="email" placeholder="Email of Org. Head" id="email-6797" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+              <label for="email-6797" class="u-label">Contact</label>
+              <input type="text" placeholder="Contact" id="email-6797" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="true">
             </div>
             <div class="u-align-right u-form-group u-form-submit">
               <a href="#" id="submitBttn" class="u-btn u-btn-round u-btn-submit u-button-style u-radius-43">Submit</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
+
+              <button class ="u-btn u-btn-round u-btn-submit u-button-style u-radius-43">Upload</button>
             </div>
             <div class="u-form-send-success">Thank you! Your message has been sent.</div>
             <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
@@ -97,7 +99,7 @@
             <input type="hidden" name="formServices" value="71c96e80506c681ae7c784f1fb2d7435">
           </form>
         </div>
-        <p class="u-text u-text-3">Status: Accepting responses</p>
+       
         <p class="u-text u-text-default u-text-4">Note: The form is active till launch date only and might be disabled as seen fit by our team</p>
       </div>
     </section>
@@ -121,7 +123,7 @@
               </div>
               <div class="u-align-center-sm u-align-right-md u-container-style u-layout-cell u-size-20 u-size-30-md u-layout-cell-2">
                 <div class="u-container-layout u-valign-middle u-container-layout-2">
-                  <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="128" data-image-height="128">
+                  <a href="Home.html" class="u-image u-logo u-image-1" data-image-width="128" data-image-height="128">
                     <img src="images/1076928.png" class="u-logo-image u-logo-image-1">
                   </a>
                 </div>
@@ -157,7 +159,6 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-        import { getDatabase,ref,set,push,child} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
         import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
        const firebaseConfig = {
   apiKey: "AIzaSyArT_nCuaAnffJAj7EvYNL1TIn2ZAw57p0",
@@ -170,44 +171,35 @@
   measurementId: "G-K791L20RLB"
 };
 
-//if(!document.getElementById("sdsf").textContent && !document.getElementById("sdsf").textContent ){alert("fill all details")}
-        const app = initializeApp(firebaseConfig);
-        console.log("firebase initialized sucessfully")
-        const analytics = getAnalytics(app);
-     console.log("script running...")
-        const Mongoapp = new Realm.App({ id: "application-0-zvrmo" });
-        const auth = getAuth();
-const provider =new GoogleAuthProvider()
-
-
+        const A = initializeApp(firebaseConfig);
+        const AL = getAnalytics(A);
+        const MA = new Realm.App({ id: "petus-android-kpkrg" });
+        const Ath = getAuth();
+const Pv = new GoogleAuthProvider()
 document.getElementById("submitBttn").onclick = function(){
-signInWithPopup(auth, provider)
-  .then((result) => {
-   
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.idToken;
-    const user = result.user;
- user.getIdToken().then(idToken => {
-  const credentials = Realm.Credentials.jwt(idToken)
-  Mongoapp.logIn(credentials).then((Muser)=>{
- Muser.functions.callFunction("setCreator").then((result)=>{
-alert("You are now verified. You'll be recieving a confirmation shortly")})})})
+
+  console.log(document.getElementById("email-6797").value.trim())
+  if(document.getElementById("name-6797").value.trim() === "" || document.getElementById("email-6797").value.trim() === ""){
+    alert("Please fill all fields. It is mandatory for security reasons!")
+    return
+  }
+
+signInWithPopup(Ath, Pv)
+  .then((r) => {
+
+    const user = r.user;
+ user.getIdToken().then(tk => {
+  const credentials = Realm.Credentials.jwt(tk)
+  MA.logIn(credentials).then((MU)=>{
+ MU.functions.callFunction("CreatorSet",document.getElementById("name-6797").value.trim(),document.getElementById("email-6797").value.trim()).then((rs)=>{
+})})})
 
 
-    const database = getDatabase();
+alert("We have got your verification request. You'll be recieving a confirmation shortly")
 
 
 }
 )}
-      
-        
 
-
-
-     
-
-
-  
     </script>
-  
 </body></html>
