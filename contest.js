@@ -97,3 +97,43 @@ function showPosition(position) {
     longitude = position.coords.longitude;
     console.log(longitude + "..." + latitude)
 }
+
+
+
+
+function makeHttpRequest(url, method, data, callback) {
+var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      // Request was successful
+      console.log("successfull call")
+      callback(null, xhr.responseText);
+    } else {
+      // Request failed
+      console.log("unsuccessfull call")
+      callback(new Error('Request failed'));
+    }
+  }
+};
+
+xhr.open(method, url, true);
+xhr.setRequestHeader('Content-Type', 'application/json'); // Set the appropriate content type if you're sending JSON data
+xhr.send(data ? JSON.stringify(data) : null);
+}
+
+// Example usage:
+const url = "https://us-east-1.aws.data.mongodb-api.com/app/analytics-wsxfv/endpoint/PetUs?page=contest"
+const method = 'GET'; // Change this to 'POST', 'PUT', 'DELETE', etc. if needed
+const data = {page : "PetUs contest"}; // Change this to your payload if you're making a POST or PUT request
+
+window.onload  = makeHttpRequest(url, method, data, function (error, response) {
+if (error) {
+  console.error('Error:', error);
+} else {
+  console.log('Response:', response);
+}
+});
+
+
