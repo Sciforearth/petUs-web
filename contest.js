@@ -1,12 +1,12 @@
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
 
 const firebaseConfig = {
     apiKey: "AIzaSyAEDtwCudzsPDzX0lRldqj17IjGRWkfT0Q",
-    authDomain: "petus-18df2.firebaseapp.com",
+    authDomain: "auth.petus.co",
     databaseURL: "https://petus-18df2-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "petus-18df2",
     storageBucket: "petus-18df2.appspot.com",
